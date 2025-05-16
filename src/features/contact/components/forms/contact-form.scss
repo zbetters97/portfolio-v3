@@ -1,0 +1,46 @@
+@use "src/styles/abstracts" as *;
+
+.contact-form {
+  @include flexcol(center, flex-start, 1em);
+  width: fit-content;
+
+  &__group {
+    @include flexcol(initial, flex-start, 0.5em);
+  }
+
+  &__label {
+    @include font(1, normal, $basic-gray);
+  }
+
+  &__input,
+  &__textarea {
+    @include font(1, normal, $basic-gray);
+    transition: border-color 0.2s;
+    outline: none;
+    border: 1px solid $darker-gray;
+    background-color: $dark-green;
+    padding: 0.25em 0.5em;
+
+    &:focus {
+      border-color: $basic-white;
+    }
+
+    &--invalid {
+      background-color: $error-highlight !important;
+    }
+  }
+
+  &__submit {
+    @include font(1, bold, $basic-white);
+    @include flexrow(center, center, 0.5em);
+    transition: background-color 0.2s;
+    border-radius: 12px;
+    background-color: $dark-green;
+    padding: 0.5em 0.75em;
+    width: fit-content;
+
+    &:hover {
+      background-color: $basic-green;
+    }
+  }
+}

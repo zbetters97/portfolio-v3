@@ -1,0 +1,31 @@
+@use "src/styles/abstracts" as *;
+
+.error {
+  @include flexcol(center, center, 0.25em);
+  @include font(1.25);
+  height: 80vh;
+  text-align: center;
+
+  &__icon {
+    @include font(3, normal, $basic-red);
+  }
+
+  &__header {
+    @include font(1.75, bold);
+  }
+
+  &__message {
+    @include font(1.25, normal, $basic-gray);
+  }
+
+  &__button {
+    @include flexrow(initial, center, 0.5em);
+    @include font(1);
+    margin-top: 1em;
+    border-radius: 12px;
+    background-color: $basic-white;
+    padding: 0.5em 0.75em;
+    width: fit-content;
+    color: $basic-black;
+  }
+}

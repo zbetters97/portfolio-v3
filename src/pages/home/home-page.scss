@@ -1,0 +1,8 @@
+@use "src/styles/abstracts" as *;
+
+.home {
+  @include flexcol(center, center, 0.5em);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}

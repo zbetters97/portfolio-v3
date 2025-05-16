@@ -1,0 +1,28 @@
+@use "src/styles/abstracts" as *;
+
+.nav {
+  @include padding-y(2em);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.navbar {
+  @include flexrow(flex-end, center, 2em);
+  padding-right: 5em;
+
+  &__link {
+    @include font(0.75, bold, $basic-gray);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $accent-primary;
+    }
+
+    &[aria-selected="true"] {
+      color: $accent-primary;
+    }
+  }
+}

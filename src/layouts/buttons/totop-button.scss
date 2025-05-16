@@ -1,0 +1,26 @@
+@use "src/styles/abstracts" as *;
+
+.to-top-button {
+  @include badge(1.25, $basic-white, green, 2em);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: 1em;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &[aria-selected="true"] {
+    opacity: 1;
+  }
+}
+
+@include md {
+  .to-top-button {
+    display: none;
+  }
+}

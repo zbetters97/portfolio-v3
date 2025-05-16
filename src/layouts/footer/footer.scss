@@ -1,0 +1,46 @@
+@use "src/styles/abstracts" as *;
+
+.footer {
+  @include flexcol(center, center, 1em);
+  @include padding-y(2em);
+  background-color: $dark-black;
+  height: fit-content;
+  text-align: center;
+
+  &__text {
+    @include font(0.5, normal, $basic-gray);
+  }
+
+  &__link {
+    position: relative;
+    padding-bottom: 0.15em;
+    color: $basic-white;
+
+    &:hover {
+      color: $accent-primary;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+
+    &::before {
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      background-color: $accent-primary;
+      width: 100%;
+      height: 2px;
+      content: "";
+    }
+  }
+}
+
+@include md {
+  .footer {
+    display: none;
+  }
+}

@@ -1,0 +1,44 @@
+@use "./colors" as *;
+
+@mixin font($size: 1, $weight: normal, $color: $basic-white, $style: normal) {
+  color: $color;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: calc(#{$size}rem + 0.5vw);
+}
+
+@mixin padding-y($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin padding-x($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin flexrow($justify: initial, $align: initial, $gap: initial) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin flexcol($justify: initial, $align: initial, $gap: initial) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin badge($font-size, $color, $bg-color, $size) {
+  @include font($font-size, bold, $color);
+  @include flexrow(center, center);
+  border-radius: 50%;
+  background-color: $bg-color;
+  width: $size;
+  height: $size;
+  text-align: center;
+}
