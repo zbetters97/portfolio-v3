@@ -1,0 +1,28 @@
+@use "src/styles/abstracts" as *;
+
+.skill-card {
+  @include flexcol(center, center, 0.5em);
+  transition: all 0.2s;
+  border: 1px solid $darker-gray;
+  padding: 2em 1em;
+
+  &:hover {
+    border-color: $accent-primary;
+
+    .skill-card__label,
+    .skill-card__icon {
+      transform: scale(1.2);
+    }
+  }
+
+  &__label {
+    @include font(1.75, bold);
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  &__icon {
+    @include font(2.5, normal, $accent-primary);
+    transition: all 0.2s;
+  }
+}

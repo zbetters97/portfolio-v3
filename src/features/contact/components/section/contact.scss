@@ -1,3 +1,5 @@
+@use "src/styles/abstracts" as *;
+
 .contact {
-  width: fit-content;
+  @include flexcol(initial, initial, 2em);
 }

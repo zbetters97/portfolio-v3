@@ -1,9 +1,9 @@
 @use "src/styles/abstracts" as *;
 
 .to-top-button {
-  @include badge(1.25, $basic-white, green, 2em);
+  @include badge(1.25, $basic-white, $basic-green, 2em);
   position: fixed;
-  right: 0;
+  right: 1%;
   bottom: 0;
   opacity: 0;
   transition: all 0.2s;

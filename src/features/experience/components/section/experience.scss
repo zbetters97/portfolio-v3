@@ -1,0 +1,5 @@
+@use "src/styles/abstracts" as *;
+
+.experience {
+  @include flexcol(initial, flex-start, 2em);
+}

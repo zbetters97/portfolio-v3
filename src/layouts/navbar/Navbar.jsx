@@ -29,7 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     sections.current = document.querySelectorAll("[data-section]");
     window.addEventListener("scroll", handleScroll);
-    
+
     handleScroll();
 
     return () => {

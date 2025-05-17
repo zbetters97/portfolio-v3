@@ -1,0 +1,31 @@
+@use "src/styles/abstracts" as *;
+
+.about {
+  @include flexcol(center, center, 1em);
+  @include padding-y(2em);
+  height: 100vh;
+  text-align: center;
+
+  &__title {
+    @include font(1.5, bold);
+  }
+
+  &__subtitle {
+    @include font(2.5, bold);
+    margin-bottom: 1em;
+  }
+
+  &__highlight {
+    color: $accent-primary;
+  }
+
+  &__description {
+    @include font(1, normal, $basic-gray);
+    width: 100%;
+    max-width: 750px;
+    font-style: italic;
+    line-height: 1.5em;
+    text-align: left;
+    word-spacing: 0.1em;
+  }
+}

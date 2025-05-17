@@ -1,0 +1,15 @@
+@use "src/styles/abstracts" as *;
+
+.about-list {
+  margin-top: 3em;
+  @include flexrow(initial, center, 5em);
+
+  &__icon {
+    @include font(2, normal, $accent-primary);
+    transition: all 0.2s;
+
+    &:hover {
+      color: $basic-white;
+    }
+  }
+}

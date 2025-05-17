@@ -1,0 +1,41 @@
+@use "src/styles/abstracts" as *;
+
+.project-card {
+  @include flexrow(space-between, flex-start, 2em);
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  &__image {
+    width: 100%;
+    min-width: 600px;
+    height: auto;
+    box-shadow: $dark-shadow;
+  }
+
+  &__content {
+    @include flexcol(initial, flex-start, 1.5em);
+    height: 100%;
+  }
+
+  &__title {
+    @include font(1.25, bold);
+    letter-spacing: 0.1em;
+  }
+
+  &__description {
+    @include font(0.75);
+  }
+
+  &__link {
+    @include font(0.75, bold);
+    @include flexrow(initial, center, 0.5em);
+    transition: all 0.2s;
+
+    &:hover {
+      gap: 1em;
+      color: $accent-primary;
+    }
+  }
+}

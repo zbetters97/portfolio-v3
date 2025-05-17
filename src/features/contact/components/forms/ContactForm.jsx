@@ -1,15 +1,12 @@
-import { useRef, useState } from "react";
-import Alert from "./Alert";
+import { useRef } from "react";
 import { isEmailValid } from "src/utils/form";
 import "./contact-form.scss";
 
 export default function ContactForm() {
-  const [error, setError] = useState("");
-
   const formRef = useRef();
 
   const handleChange = (e) => {
-    e.target.classList.remove("form__input--invalid");
+    e.target.classList.remove("contact-form__input--invalid");
   };
 
   const handleSubmit = (e) => {
@@ -24,26 +21,22 @@ export default function ContactForm() {
     const { name, email, message } = formRef.current;
 
     if (!name.value.trim()) {
-      name.classList.add("form__input--invalid");
-      setError("Please provide your name.");
+      name.classList.add("contact-form__input--invalid");
       return false;
     }
 
     if (!email.value.trim()) {
-      email.classList.add("form__input--invalid");
-      setError("Please provide your email.");
+      email.classList.add("contact-form__input--invalid");
       return false;
     }
 
     if (!isEmailValid(email.value)) {
-      email.classList.add("form__input--invalid");
-      setError("Please provide a valid email address.");
+      email.classList.add("contact-form__input--invalid");
       return false;
     }
 
     if (!message.value.trim()) {
-      message.classList.add("form__input--invalid");
-      setError("Please provide a message.");
+      message.classList.add("contact-form__input--invalid");
       return false;
     }
 
@@ -74,12 +67,11 @@ export default function ContactForm() {
       <TextBox
         type="text"
         id="message"
-        placeholder="Hello, Zachary Betters..."
+        placeholder="Type your message here..."
         label="Message"
         handleChange={handleChange}
       />
 
-      <Alert message={error} />
       <SubmitButton handleSubmit={handleSubmit} />
     </form>
   );

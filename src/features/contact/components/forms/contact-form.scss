@@ -2,27 +2,30 @@
 
 .contact-form {
   @include flexcol(center, flex-start, 1em);
-  width: fit-content;
+  width: 100%;
+  max-width: 600px;
 
   &__group {
     @include flexcol(initial, flex-start, 0.5em);
+    width: 100%;
   }
 
   &__label {
-    @include font(1, normal, $basic-gray);
+    @include font(1, normal);
   }
 
   &__input,
   &__textarea {
-    @include font(1, normal, $basic-gray);
+    @include font(1, normal);
     transition: border-color 0.2s;
     outline: none;
-    border: 1px solid $darker-gray;
-    background-color: $dark-green;
+    border: 1px solid $basic-white;
+    background-color: transparent;
     padding: 0.25em 0.5em;
+    width: 100%;
 
-    &:focus {
-      border-color: $basic-white;
+    &::placeholder {
+      color: $basic-gray;
     }
 
     &--invalid {
@@ -30,17 +33,29 @@
     }
   }
 
+  &__textarea {
+    height: 200px;
+    resize: none;
+
+    &::placeholder {
+      font-style: italic;
+    }
+  }
+
   &__submit {
-    @include font(1, bold, $basic-white);
+    @include font(1, bold);
     @include flexrow(center, center, 0.5em);
-    transition: background-color 0.2s;
+    transition: all 0.2s;
+    margin-top: 1em;
+    border: 1px solid $basic-white;
     border-radius: 12px;
-    background-color: $dark-green;
-    padding: 0.5em 0.75em;
+    background-color: transparent;
+    padding: 0.5em 1em;
     width: fit-content;
 
     &:hover {
-      background-color: $basic-green;
+      border-color: $accent-primary;
+      color: $accent-primary;
     }
   }
 }

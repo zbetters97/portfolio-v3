@@ -23,8 +23,9 @@ body {
 
 .wrapper {
   @include flexcol();
-  height: 100dvh;
-  height: 100svh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  position: relative;
 }
 
 main {

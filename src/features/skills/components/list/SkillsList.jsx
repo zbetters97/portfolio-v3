@@ -3,6 +3,7 @@ import {
   faJava,
   faMicrosoft,
   faNode,
+  faPhp,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import SkillCard from "../cards/SkillCard";
@@ -15,11 +16,12 @@ export default function SkillsList() {
       <SkillCard label="Node.js" icon={faNode} link="https://nodejs.org/en/" />
       <SkillCard label="Java" icon={faJava} link="https://www.java.com/" />
       <SkillCard
-        label="Tailwind CSS"
+        label="Tailwind"
         icon={faCss3}
         link="https://tailwindcss.com/"
       />
       <SkillCard label="SCSS" icon={faCss3} link="https://sass-lang.com/" />
+      <SkillCard label="PHP" icon={faPhp} link="https://www.php.net/" />
       <SkillCard
         label="Excel"
         icon={faMicrosoft}

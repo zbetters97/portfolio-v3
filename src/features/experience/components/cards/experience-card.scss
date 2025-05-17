@@ -1,0 +1,48 @@
+@use "src/styles/abstracts" as *;
+
+.experience-card {
+  @include flexrow(space-between, flex-start);
+  width: 100%;
+
+  &__tenure {
+    @include font(0.75, normal, $basic-gray);
+    flex-basis: 25%;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    @include flexcol(initial, flex-start, 0.5em);
+    flex-basis: 75%;
+  }
+
+  &__title {
+    @include font(1, normal);
+    @include flexrow(initial, center, 0.5em);
+    transition: gap 0.2s;
+
+    &:hover {
+      gap: 1em;
+      color: $accent-primary;
+    }
+  }
+}
+
+.actions {
+  padding-left: 1em;
+  list-style-type: disc;
+
+  &__item {
+    @include font(0.75, normal);
+    margin: 0.5em 0;
+  }
+}
+
+.tags {
+  @include flexrow(initial, center, 1em);
+
+  &__item {
+    @include font(0.5, bold, $accent-primary);
+    background-color: $dark-green;
+    padding: 0.5em 0.75em;
+  }
+}

@@ -1,16 +1,17 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import "./experience-card.scss";
 
 export default function ExperienceCard(props) {
   const { tenure, url, title, company, actions, tags } = props;
 
   return (
-    <div>
-      <p>{tenure}</p>
-      <div>
-        <Link to={url} target="_blank">
-          <h3>
+    <div className="experience-card">
+      <p className="experience-card__tenure">{tenure}</p>
+      <div className="experience-card__content">
+        <Link to={url} target="_blank" className="experience-card__link">
+          <h3 className="experience-card__title">
             {title} · {company}
             <FontAwesomeIcon icon={faArrowRight} />
           </h3>
@@ -24,11 +25,11 @@ export default function ExperienceCard(props) {
 
 export function Actions({ actions }) {
   return (
-    <ul>
+    <ul className="actions">
       {actions?.map((action, index) => {
         return (
-          <li key={index}>
-            <p>{action}</p>
+          <li key={index} className="actions__item">
+            <p className="actions__text">{action}</p>
           </li>
         );
       })}
