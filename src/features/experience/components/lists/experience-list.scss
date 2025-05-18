@@ -1,5 +1,5 @@
 @use "src/styles/abstracts" as *;
 
 .experience-list {
-  @include flexcol(initial, center, 1em);
+  @include flexcol(initial, center, 2em);
 }

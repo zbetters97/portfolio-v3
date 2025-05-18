@@ -8,16 +8,23 @@ export default function Navbar() {
   const handleScroll = () => {
     let newActiveSection = null;
 
+    // Iterate through each section
     sections.current.forEach((section) => {
+      // Get top of section
       const sectionTop = section.offsetTop;
-      const sectionBottom = sectionTop + section.offsetHeight;
 
+      // Not exact section height
+      const sectionBottom = sectionTop + section.offsetHeight * 0.8;
+
+      // Get top and bottom of browser viewport
       const viewportTop = window.scrollY;
       const viewportBottom = viewportTop + window.innerHeight;
 
+      // Check if section is within frame
       const isOnScreen =
         sectionBottom > viewportTop && sectionTop < viewportBottom;
 
+      // Set new active section if viewable section not already found
       if (isOnScreen && newActiveSection === null) {
         newActiveSection = section.id;
       }
@@ -27,11 +34,13 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    // Check active section on load and scroll
     sections.current = document.querySelectorAll("[data-section]");
     window.addEventListener("scroll", handleScroll);
 
     handleScroll();
 
+    // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -55,8 +64,10 @@ export default function Navbar() {
 }
 
 function NavItem({ to, label, activeSection }) {
+  // Check if section is active
   const isActive = activeSection === to;
 
+  // Scroll to section
   const handleClick = () => {
     document.getElementById(to).scrollIntoView({ behavior: "smooth" });
   };

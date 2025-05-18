@@ -2,7 +2,6 @@
 
 .about {
   @include flexcol(center, center, 1em);
-  @include padding-y(2em);
   height: 100vh;
   text-align: center;
 
@@ -21,11 +20,15 @@
 
   &__description {
     @include font(1, normal, $basic-gray);
-    width: 100%;
-    max-width: 750px;
     font-style: italic;
-    line-height: 1.5em;
-    text-align: left;
+    line-height: 1.5em;    
     word-spacing: 0.1em;
+
+    &__container {
+      @include flexcol(center, center, 1em);
+      width: 100%;
+      max-width: 1000px;
+      text-align: left;
+    }
   }
 }

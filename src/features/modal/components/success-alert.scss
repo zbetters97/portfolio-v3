@@ -1,0 +1,44 @@
+@use "src/styles/abstracts" as *;
+
+.success {
+  @include flexcol(center, center, 2em);
+  padding: 1em;
+
+  &__message {
+    @include flexrow(center, center, 0.5em);
+    @include font(2.25, normal, $light-green, italic);
+  }
+
+  &__button {
+    @include flexrow(center, center, 0.5em);
+    @include font(1.5);
+    transition: all 0.2s;
+    border: 1px solid $basic-white;
+    padding: 0.5em 0.75em;
+
+    &:hover {
+      color: $accent-primary;
+    }
+  }
+}
+
+@include md {
+  .success {
+    padding: 3em 2em;
+
+    &__message {
+      font-size: 1.5rem;
+    }
+
+    &__button {
+      border: none;
+      border-radius: 26px;
+      background-color: $basic-green;
+      font-size: 1.5rem;
+
+      svg {
+        display: none;
+      }
+    }
+  }
+}

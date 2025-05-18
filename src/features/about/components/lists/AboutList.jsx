@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faInstagram,
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./about-list.scss";
-import { Link } from "react-router-dom";
 
 export default function AboutList() {
   return (

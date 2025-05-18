@@ -21,6 +21,11 @@ body {
   }
 }
 
+.lock-scroll {
+  position: fixed;
+  width: 100%;
+}
+
 .wrapper {
   @include flexcol();
   min-height: 100dvh;

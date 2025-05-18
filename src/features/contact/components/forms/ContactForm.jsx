@@ -1,10 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { isEmailValid } from "src/utils/form";
+import { useMessageContext } from "src/features/messages/context/MessageContext";
+import Alert from "./Alert";
 import "./contact-form.scss";
 
-export default function ContactForm() {
+export default function ContactForm({ setIsModalOpen }) {
+  const { addMessage } = useMessageContext();
+
+  const [error, setError] = useState("");
   const formRef = useRef();
 
+  // Remove invalid class on input change
   const handleChange = (e) => {
     e.target.classList.remove("contact-form__input--invalid");
   };
@@ -12,9 +18,20 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Validate data
     if (!validateData()) return;
 
-    resetValues();
+    // Get values from form
+    const { name, email, message } = formRef.current;
+
+    // Submit to database
+    if (addMessage(name.value, email.value, message.value)) {
+      setIsModalOpen(true);
+      resetValues();
+    } else {
+      // Throw error if database submission fails
+      setError("Something went wrong. Please try again later.");
+    }
   };
 
   const validateData = () => {
@@ -22,29 +39,44 @@ export default function ContactForm() {
 
     if (!name.value.trim()) {
       name.classList.add("contact-form__input--invalid");
+      setError("Please enter your name.");
       return false;
     }
 
     if (!email.value.trim()) {
       email.classList.add("contact-form__input--invalid");
+      setError("Please enter your email.");
       return false;
     }
 
     if (!isEmailValid(email.value)) {
       email.classList.add("contact-form__input--invalid");
+      setError("Please enter a valid email.");
       return false;
     }
 
     if (!message.value.trim()) {
       message.classList.add("contact-form__input--invalid");
+      setError("Please enter a message.");
       return false;
     }
 
+    if (message.value.trim().length < 20) {
+      message.classList.add("contact-form__input--invalid");
+      setError("Message must be at least 20 characters long.");
+      return false;
+    }
+
+    // No errors found
     return true;
   };
 
   const resetValues = () => {
+    setError("");
     formRef.current.reset();
+    formRef.current.name.classList.remove("contact-form__input--invalid");
+    formRef.current.email.classList.remove("contact-form__input--invalid");
+    formRef.current.message.classList.remove("contact-form__input--invalid");
   };
 
   return (
@@ -72,7 +104,10 @@ export default function ContactForm() {
         handleChange={handleChange}
       />
 
-      <SubmitButton handleSubmit={handleSubmit} />
+      <div>
+        <Alert message={error} />
+        <SubmitButton handleSubmit={handleSubmit} />
+      </div>
     </form>
   );
 }

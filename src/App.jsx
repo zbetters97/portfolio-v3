@@ -5,8 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import AppProviders from "./pages/AppProviers";
 import HomePage from "./pages/home/HomePage";
+import AppProviders from "./pages/AppProviers";
 import ErrorPage from "./pages/error/ErrorPage";
 
 export default function App() {

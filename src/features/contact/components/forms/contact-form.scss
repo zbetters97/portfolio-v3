@@ -1,7 +1,7 @@
 @use "src/styles/abstracts" as *;
 
 .contact-form {
-  @include flexcol(center, flex-start, 1em);
+  @include flexcol(center, flex-start, 2em);
   width: 100%;
   max-width: 600px;
 

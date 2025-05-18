@@ -2,13 +2,13 @@
 
 .alert {
   @include flexrow(center, center, 0.5em);
-  @include font(0.5, normal, $basic-white, italic);
-  opacity: 0;
+  @include font(0.75, normal, $basic-white, italic);
   align-self: center;
+  opacity: 0;
+  transition: all 0.2s;
   padding: 1em 0;
   width: fit-content;
-  height: 20px;
-  transition: all 0.2s;
+  height: 10px;
 
   &[aria-expanded="true"] {
     opacity: 1;
@@ -21,7 +21,7 @@
 
 @include md {
   .alert {
-    font-size: 1rem;
     padding: 0;
+    font-size: 1rem;
   }
 }
