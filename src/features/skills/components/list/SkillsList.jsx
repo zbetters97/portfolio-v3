@@ -7,7 +7,7 @@ import {
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import SkillCard from "../cards/SkillCard";
-import "./skills-List.scss";
+import "./skills-list.scss";
 
 export default function SkillsList() {
   return (
