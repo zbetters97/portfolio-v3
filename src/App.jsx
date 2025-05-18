@@ -17,7 +17,8 @@ export default function App() {
       children: [
         {
           index: true,
-          element: <Navigate to="/home" />,
+          element: <HomePage />,
+          errorElement: <ErrorPage is404={false} />,
         },
         {
           path: "/home",
