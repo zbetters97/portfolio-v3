@@ -33,12 +33,14 @@ function Description() {
         projects that demonstrate strong coding skills and a problem-solving
         mindset.
       </p>
+      {/*
       <p className="about__description">
         Now, I’m looking to transition into a software development role where I
         can apply my technical expertise, practical development experience, and
         strategic understanding of IT systems to build innovative, high-impact
         software solutions.
       </p>
+      */}
     </div>
   );
 }

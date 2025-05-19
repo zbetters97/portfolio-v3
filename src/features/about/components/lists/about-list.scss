@@ -13,3 +13,22 @@
     }
   }
 }
+
+@include sm {
+  .about-list {
+    margin-top: 2em;
+    gap: 0;
+    justify-content: space-evenly;
+    width: 80%;
+
+    &__icon {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include sm {
+  .about-list {
+    width: 100%;
+  }
+}

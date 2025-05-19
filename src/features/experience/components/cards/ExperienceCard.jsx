@@ -13,7 +13,10 @@ export default function ExperienceCard(props) {
         <Link to={url} target="_blank" className="experience-card__link">
           <h3 className="experience-card__title">
             {title} · {company}
-            <FontAwesomeIcon icon={faArrowRight} />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="experience-card__arrow"
+            />
           </h3>
         </Link>
         <Actions actions={actions} />

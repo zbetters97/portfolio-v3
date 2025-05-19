@@ -1,9 +1,8 @@
-$breakpoint-xs: 0px;
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 960px;
-$breakpoint-xl: 1024px;
-$breakpoint-xxl: 1280px;
+$breakpoint-xs: 560px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 960px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
 
 @mixin xs {
   @media (max-width: #{$breakpoint-xs}) {
@@ -27,11 +26,6 @@ $breakpoint-xxl: 1280px;
 }
 @mixin xl {
   @media (max-width: #{$breakpoint-xl}) {
-    @content;
-  }
-}
-@mixin xxl {
-  @media (max-width: #{$breakpoint-xxl}) {
     @content;
   }
 }

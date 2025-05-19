@@ -3,3 +3,9 @@
 .projects {
   @include flexcol(initial, flex-start, 2em);
 }
+
+@include sm {
+  .projects {
+    gap: 1em;
+  }
+}

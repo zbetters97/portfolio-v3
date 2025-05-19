@@ -1,46 +1,59 @@
 import { useEffect, useRef, useState } from "react";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./navbar.scss";
+
+const NAV_ITEMS = [
+  { to: "about", label: "About" },
+  { to: "experience", label: "Experience" },
+  { to: "skills", label: "Skills" },
+  { to: "projects", label: "Projects" },
+  { to: "contact", label: "Contact" },
+];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState(null);
   const sections = useRef([]);
 
-  const handleScroll = () => {
-    let newActiveSection = null;
+  useEffect(() => {
+    // Get all Home page sections
+    sections.current = Array.from(document.querySelectorAll("[data-section]"));
 
-    // Iterate through each section
-    sections.current.forEach((section) => {
-      // Get top of section
-      const sectionTop = section.offsetTop;
+    const handleScroll = () => {
+      let newActiveSection = null;
 
-      // Not exact section height
-      const sectionBottom = sectionTop + section.offsetHeight * 0.8;
-
-      // Get top and bottom of browser viewport
+      // Get top and bottom of viewport
       const viewportTop = window.scrollY;
       const viewportBottom = viewportTop + window.innerHeight;
 
-      // Check if section is within frame
-      const isOnScreen =
-        sectionBottom > viewportTop && sectionTop < viewportBottom;
+      // For each section
+      for (const section of sections.current) {
+        // Get top and bottom of section
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight * 0.8;
 
-      // Set new active section if viewable section not already found
-      if (isOnScreen && newActiveSection === null) {
-        newActiveSection = section.id;
+        // Check if section is within viewport
+        const isOnScreen =
+          sectionBottom > viewportTop && sectionTop < viewportBottom;
+
+        // If section is on screen, set active section and break
+        if (isOnScreen) {
+          newActiveSection = section.id;
+          break;
+        }
       }
-    });
 
-    setActiveSection(newActiveSection);
-  };
+      // Set active section if it has changed
+      setActiveSection((prev) =>
+        prev !== newActiveSection ? newActiveSection : prev
+      );
+    };
 
-  useEffect(() => {
-    // Check active section on load and scroll
-    sections.current = document.querySelectorAll("[data-section]");
+    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
     handleScroll();
 
-    // Cleanup
+    // Clean up
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -48,34 +61,62 @@ export default function Navbar() {
 
   return (
     <header className="nav">
-      <nav className="navbar">
-        <NavItem to="about" label="About" activeSection={activeSection} />
-        <NavItem
-          to="experience"
-          label="Experience"
-          activeSection={activeSection}
-        />
-        <NavItem to="skills" label="Skills" activeSection={activeSection} />
-        <NavItem to="projects" label="Projects" activeSection={activeSection} />
-        <NavItem to="contact" label="Contact" activeSection={activeSection} />
+      <nav className="nav__bar">
+        {NAV_ITEMS.map((item) => (
+          <NavItem
+            key={item.to}
+            to={item.to}
+            label={item.label}
+            activeSection={activeSection}
+          />
+        ))}
       </nav>
+      <NavDropdown activeSection={activeSection} />
     </header>
   );
 }
 
-function NavItem({ to, label, activeSection }) {
-  // Check if section is active
+function NavDropdown({ activeSection }) {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  return (
+    <div className="nav__dropdown">
+      <button
+        onClick={() => setShowDropdown(!showDropdown)}
+        className="nav__dropdown__button"
+        aria-label="Open navigation menu"
+      >
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+
+      <div className="nav__dropdown__menu" aria-expanded={showDropdown}>
+        {NAV_ITEMS.map((item) => (
+          <NavItem
+            key={item.to}
+            to={item.to}
+            label={item.label}
+            activeSection={activeSection}
+            setShowDropdown={setShowDropdown}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function NavItem({ to, label, activeSection, setShowDropdown }) {
   const isActive = activeSection === to;
 
   // Scroll to section
   const handleClick = () => {
-    document.getElementById(to).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
+    setShowDropdown && setShowDropdown(false);
   };
 
   return (
     <button
       onClick={handleClick}
-      className="navbar__link"
+      className="nav__link"
       aria-selected={isActive}
     >
       {label}

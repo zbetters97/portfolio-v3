@@ -21,7 +21,7 @@
   &__description {
     @include font(1, normal, $basic-gray);
     font-style: italic;
-    line-height: 1.5em;    
+    line-height: 1.5em;
     word-spacing: 0.1em;
 
     &__container {
@@ -29,6 +29,26 @@
       width: 100%;
       max-width: 1000px;
       text-align: left;
+    }
+  }
+}
+
+@include sm {
+  .about {
+    &__description {
+      &__container {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@include sm {
+  .about {
+    &__description {
+      &__container {
+        width: 100%;
+      }
     }
   }
 }

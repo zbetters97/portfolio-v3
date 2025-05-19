@@ -3,3 +3,9 @@
 .experience {
   @include flexcol(initial, flex-start, 2em);
 }
+
+@include sm {
+  .experience {
+    gap: 1em;
+  }
+}

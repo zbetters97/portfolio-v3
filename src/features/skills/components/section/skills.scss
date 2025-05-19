@@ -3,3 +3,9 @@
 .skills {
   @include flexcol(initial, initial, 2em);
 }
+
+@include sm {
+  .skills {
+    gap: 1em;
+  }
+}

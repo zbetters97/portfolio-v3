@@ -26,3 +26,17 @@
     transition: all 0.2s;
   }
 }
+
+@include sm {
+  .skill-card {
+    padding: 1em;
+
+    &__label {
+      font-size: 1.5rem;
+    }
+
+    &__icon {
+      font-size: 2.5rem;
+    }
+  }
+}
