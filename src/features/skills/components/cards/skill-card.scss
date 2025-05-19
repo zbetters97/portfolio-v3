@@ -9,21 +9,27 @@
   &:hover {
     border-color: $accent-primary;
 
-    .skill-card__label,
-    .skill-card__icon {
+    & > * {
       transform: scale(1.2);
     }
   }
 
+  & > * {
+    transition: all 0.2s;
+  }
+
   &__label {
     @include font(1.75, bold);
-    transition: all 0.2s;
     text-align: center;
   }
 
   &__icon {
     @include font(2.5, normal, $accent-primary);
-    transition: all 0.2s;
+  }
+
+  &__image {
+    width: 35px;
+    height: 35px;
   }
 }
 

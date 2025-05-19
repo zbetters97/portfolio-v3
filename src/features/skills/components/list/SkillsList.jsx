@@ -1,5 +1,4 @@
 import {
-  faCss3,
   faJava,
   faMicrosoft,
   faNode,
@@ -12,20 +11,24 @@ import "./skills-list.scss";
 export default function SkillsList() {
   return (
     <div className="skills-list">
-      <SkillCard label="React" icon={faReact} link="https://react.dev/" />
-      <SkillCard label="Node.js" icon={faNode} link="https://nodejs.org/en/" />
-      <SkillCard label="Java" icon={faJava} link="https://www.java.com/" />
+      <SkillCard label="React" link="https://react.dev/" icon={faReact} />
+      <SkillCard label="Node.js" link="https://nodejs.org/en/" icon={faNode} />
+      <SkillCard label="Java" link="https://www.java.com/" icon={faJava} />
       <SkillCard
         label="Tailwind"
-        icon={faCss3}
         link="https://tailwindcss.com/"
+        image="/icons/skills/tailwind.png"
       />
-      <SkillCard label="SCSS" icon={faCss3} link="https://sass-lang.com/" />
-      <SkillCard label="PHP" icon={faPhp} link="https://www.php.net/" />
+      <SkillCard
+        label="SCSS"
+        link="https://sass-lang.com/"
+        image="/icons/skills/sass.png"
+      />
+      <SkillCard label="PHP" link="https://www.php.net/" icon={faPhp} />
       <SkillCard
         label="Excel"
-        icon={faMicrosoft}
         link="https://www.office.com/"
+        icon={faMicrosoft}
       />
     </div>
   );
