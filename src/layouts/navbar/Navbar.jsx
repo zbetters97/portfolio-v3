@@ -109,8 +109,18 @@ function NavItem({ to, label, activeSection, setShowDropdown }) {
 
   // Scroll to section
   const handleClick = () => {
+    if (setShowDropdown) {
+      // Scroll to top of section, offset by 50px
+      window.scrollTo({
+        top: document.getElementById(to).offsetTop - 50,
+        behavior: "smooth",
+      });
+      setShowDropdown(false);
+
+      return;
+    }
+
     document.getElementById(to)?.scrollIntoView({ behavior: "smooth" });
-    setShowDropdown && setShowDropdown(false);
   };
 
   return (
