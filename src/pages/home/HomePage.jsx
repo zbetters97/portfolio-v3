@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <main className="home">
       <About />
-      <Experience />
-      <Skills />
       <Projects />
+      <Skills />
+      <Experience />
       <Contact />
     </main>
   );

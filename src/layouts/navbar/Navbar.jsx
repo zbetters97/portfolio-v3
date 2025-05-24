@@ -5,9 +5,9 @@ import "./navbar.scss";
 
 const NAV_ITEMS = [
   { to: "about", label: "About" },
-  { to: "experience", label: "Experience" },
-  { to: "skills", label: "Skills" },
   { to: "projects", label: "Projects" },
+  { to: "skills", label: "Skills" },
+  { to: "experience", label: "Experience" },
   { to: "contact", label: "Contact" },
 ];
 
