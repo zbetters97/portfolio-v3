@@ -14,7 +14,7 @@ export default function ProjectsList() {
       <ProjectCard
         image="images/projects/chatit.png"
         title="ChatIt"
-        description="A responsive messaging platform built with React.js and SCSS, featuring real-time communication via Firebase and music sharing through Spotify Web API integration. It showcases secure authentication, cloud data handling, and dynamic UI design, highlighting strengths in frontend development and API integration."
+        description="A responsive messaging platform built with React.js and SCSS, featuring real-time communication via Google Firebase. It showcases secure authentication, cloud data handling, and dynamic UI design, highlighting strengths in frontend development and API integration."
         link="https://chatit-app.netlify.app/"
       />
 
