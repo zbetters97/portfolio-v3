@@ -6,7 +6,19 @@
   text-align: center;
 
   &__title {
+    width: fit-content;
+  }
+
+  &__header {
     @include font(1.5, bold);
+    // One step per character
+    animation: typing 2s steps(19, end), blink-caret 1s step-end infinite;
+    margin: 0 auto;
+    border-right: 3px solid $accent-primary;
+    overflow: hidden;
+    font-family: monospace;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
   }
 
   &__subtitle {
@@ -50,5 +62,24 @@
         width: 100%;
       }
     }
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $accent-primary;
   }
 }

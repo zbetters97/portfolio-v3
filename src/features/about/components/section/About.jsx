@@ -14,9 +14,11 @@ export default function About() {
 
 function Header() {
   return (
-    <h1 className="about__title">
-      Hello, I'm <span className="about__highlight">Zachary</span>.
-    </h1>
+    <div className="about__title">
+      <h1 className="about__header">
+        Hello, I'm <span className="about__highlight">Zachary</span>.
+      </h1>
+    </div>
   );
 }
 

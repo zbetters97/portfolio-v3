@@ -13,12 +13,21 @@
   width: 100%;
 
   &:not(:first-child) {
+    transform: translateX(-200px);
+    opacity: 0;
+    transition: all 0.7s ease;
+    will-change: opacity, transform;
     padding-top: 5em;
   }
 
   &__header {
     @include font(3.5, bold);
     letter-spacing: 0.05em;
+  }
+
+  &--visible:not(:first-child) {
+    transform: none;
+    opacity: 1;
   }
 }
 
