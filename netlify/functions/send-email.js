@@ -29,7 +29,7 @@ export async function handler(event) {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: "zachbetters97@gmail.com",
+        user: address,
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
