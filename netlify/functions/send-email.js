@@ -29,7 +29,7 @@ export async function handler(event) {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: address,
+        user: "zachbetters97@gmail.com",
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
@@ -40,9 +40,9 @@ export async function handler(event) {
     await transport.sendMail({
       from: `${name} <${address}>`,
       to: "zachbetters97@gmail.com",
-      subject: `New portfolio message from ${name}`,
+      subject: `You have a new portfolio message`,
       text: message,
-      html: `<p>${message}</p>`,
+      html: `<h3>${name} (${address})</h3><p>${message}</p>`,
     });
 
     return {
