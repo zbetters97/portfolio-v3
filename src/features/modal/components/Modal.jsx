@@ -1,12 +1,12 @@
 import "./modal.scss";
 
 export default function Modal({ children, isModalOpen, setIsModalOpen }) {
-  function onClose() {
+  const onClose = () => {
     setIsModalOpen(false);
 
     // Allow scrolling when modal closes
     document.body.classList.remove("lock-scroll");
-  }
+  };
 
   return (
     <div onClick={onClose} className="modal" aria-expanded={isModalOpen}>

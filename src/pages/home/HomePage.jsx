@@ -1,12 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import About from "src/features/about/components/section/About";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Skills from "src/features/skills/components/section/Skills";
 import Contact from "src/features/contact/components/section/Contact";
+import SuccessAlert from "src/features/modal/components/SuccessAlert";
 import Projects from "src/features/projects/components/section/Projects";
 import Experience from "src/features/experience/components/section/Experience";
+import Modal from "../../features/modal/components/Modal";
 import "./home-page.scss";
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Prevent scrolling when modal is open
+    if (isModalOpen) {
+      document.body.classList.add("lock-scroll");
+    }
+  }, [isModalOpen]);
+
   useEffect(() => {
     const sections = document.querySelectorAll(".section");
 
@@ -38,11 +50,20 @@ export default function HomePage() {
 
   return (
     <main className="home">
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        <SuccessAlert
+          message="Message sent!"
+          link="Go back"
+          icon={faArrowRight}
+          onClick={() => setIsModalOpen(false)}
+        />
+      </Modal>
+
       <About />
       <Projects />
       <Skills />
       <Experience />
-      <Contact />
+      <Contact setIsModalOpen={setIsModalOpen} />
     </main>
   );
 }

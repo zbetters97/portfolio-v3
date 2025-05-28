@@ -1,12 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import HomePage from "./pages/home/HomePage";
-import AppProviders from "./pages/AppProviers";
 import ErrorPage from "./pages/error/ErrorPage";
 
 export default function App() {
@@ -35,12 +30,8 @@ export default function App() {
   ]);
 
   return (
-    <AppProviders>
-      <RouterProvider router={router}>
-        <ErrorBoundary
-          FallbackComponent={(props) => <ErrorPage {...props} />}
-        />
-      </RouterProvider>
-    </AppProviders>
+    <RouterProvider router={router}>
+      <ErrorBoundary FallbackComponent={(props) => <ErrorPage {...props} />} />
+    </RouterProvider>
   );
 }

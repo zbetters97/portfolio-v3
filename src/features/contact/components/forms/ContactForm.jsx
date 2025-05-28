@@ -1,12 +1,9 @@
 import { useRef, useState } from "react";
 import { isEmailValid } from "src/utils/form";
-import { useMessageContext } from "src/features/messages/context/MessageContext";
 import Alert from "./Alert";
 import "./contact-form.scss";
 
 export default function ContactForm({ setIsModalOpen }) {
-  const { addMessage } = useMessageContext();
-
   const [error, setError] = useState("");
   const formRef = useRef();
 
@@ -15,7 +12,16 @@ export default function ContactForm({ setIsModalOpen }) {
     e.target.classList.remove("contact-form__input--invalid");
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = async (name, address, message) => {
+    const res = await fetch("/.netlify/functions/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, address, message }),
+    });
+    return res.ok;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate data
@@ -25,7 +31,7 @@ export default function ContactForm({ setIsModalOpen }) {
     const { name, email, message } = formRef.current;
 
     // Submit to database
-    if (addMessage(name.value, email.value, message.value)) {
+    if (await sendEmail(name.value, email.value, message.value)) {
       setIsModalOpen(true);
       resetValues();
     } else {
@@ -80,7 +86,7 @@ export default function ContactForm({ setIsModalOpen }) {
   };
 
   return (
-    <form ref={formRef} className="contact-form">
+    <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
       <Input
         type="text"
         id="name"
@@ -106,7 +112,7 @@ export default function ContactForm({ setIsModalOpen }) {
 
       <div>
         <Alert message={error} />
-        <SubmitButton handleSubmit={handleSubmit} />
+        <SubmitButton />
       </div>
     </form>
   );
@@ -146,13 +152,9 @@ function TextBox({ type, id, placeholder, label, handleChange }) {
   );
 }
 
-function SubmitButton({ handleSubmit }) {
+function SubmitButton() {
   return (
-    <button
-      type="submit"
-      onClick={handleSubmit}
-      className="contact-form__submit"
-    >
+    <button type="submit" className="contact-form__submit">
       Submit
     </button>
   );
