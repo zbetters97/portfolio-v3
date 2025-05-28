@@ -16,6 +16,8 @@ export default function HomePage() {
     // Prevent scrolling when modal is open
     if (isModalOpen) {
       document.body.classList.add("lock-scroll");
+    } else {
+      document.body.classList.remove("lock-scroll");
     }
   }, [isModalOpen]);
 
@@ -53,7 +55,7 @@ export default function HomePage() {
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
         <SuccessAlert
           message="Message sent!"
-          link="Go back"
+          link="Continue"
           icon={faArrowRight}
           onClick={() => setIsModalOpen(false)}
         />
